@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Clientes | Administración NDB</title>
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+<header class="header">
+  <div class="topbar">
+    <a class="brand" href="presupuestos.html"><img src="../img/logo.jpeg" alt="NDB"><div><h1>NDB Sanitarios</h1><small>Administración</small></div></a>
+    <button class="btn btn-red" onclick="logout()">Cerrar sesión</button>
+  </div>
+</header>
+<main class="container">
+  <div class="layout admin-layout">
+    <aside class="card side">
+      <a href="presupuestos.html">Pedidos y resumen</a>
+      <a href="productos.html">Agregar productos</a>
+      <a class="active" href="clientes.html">Agregar clientes</a>
+      <a href="../productos.html">Ver tienda</a>
+    </aside>
+    <section class="card">
+      <div class="section-title"><div><h2>Clientes</h2><p class="muted">El administrador crea la cuenta del cliente. Se guarda en Authentication y Firestore con rol cliente.</p></div></div>
+      <div class="admin-create-box">
+        <h3>Agregar cliente</h3>
+        <div class="admin-form-grid">
+          <input id="newClientBusiness" class="field" placeholder="Razón social *">
+          <input id="newClientName" class="field" placeholder="Nombre y apellido">
+          <input id="newClientEmail" class="field" type="email" placeholder="Email *">
+          <input id="newClientPassword" class="field" type="password" minlength="6" placeholder="Contraseña inicial *">
+          <input id="newClientPhone" class="field" placeholder="Teléfono">
+          <input id="newClientCity" class="field" placeholder="Localidad">
+          <input id="newClientDiscount" class="field" type="number" min="0" max="100" step="0.01" value="0" placeholder="Descuento %">
+        </div>
+        <button id="createClientBtn" class="btn btn-red" onclick="createClient()">+ Agregar cliente</button>
+      </div>
+      <hr class="linea-roja">
+      <div id="adminClients"></div>
+    </section>
+  </div>
+</main>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="../js/config.js"></script><script src="../js/firebase.js"></script><script src="../js/app.js"></script>
+</body>
+</html>

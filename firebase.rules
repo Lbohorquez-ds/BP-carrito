@@ -1,0 +1,44 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function estaLogueado() { return request.auth != null; }
+    function esAdmin() {
+      return estaLogueado() &&
+        get(/databases/$(database)/documents/usuarios/$(request.auth.uid)).data.rol == "admin";
+    }
+
+    match /usuarios/{userId} {
+      allow read: if estaLogueado() && (request.auth.uid == userId || esAdmin());
+      allow create: if esAdmin() ||
+        (estaLogueado() && request.auth.uid == userId && request.resource.data.rol == "cliente");
+      allow update: if esAdmin() ||
+        (estaLogueado() && request.auth.uid == userId && request.resource.data.rol == resource.data.rol);
+      allow delete: if esAdmin();
+    }
+
+    match /productos/{productoId} {
+      allow read: if estaLogueado();
+      allow create, update, delete: if esAdmin();
+    }
+
+    match /pedidos/{pedidoId} {
+      allow read: if esAdmin() ||
+        (estaLogueado() && resource.data.clienteUid == request.auth.uid);
+
+      allow create: if estaLogueado() &&
+        request.resource.data.clienteUid == request.auth.uid &&
+        request.resource.data.estado == "pendiente";
+
+      allow update: if esAdmin() ||
+        (estaLogueado() &&
+         resource.data.clienteUid == request.auth.uid &&
+         request.resource.data.clienteUid == request.auth.uid &&
+         (
+           (resource.data.estado in ["pendiente", "preparacion"] && request.resource.data.estado == resource.data.estado) ||
+           (resource.data.estado == "pendiente" && request.resource.data.estado == "cancelado")
+         ));
+
+      allow delete: if esAdmin();
+    }
+  }
+}
