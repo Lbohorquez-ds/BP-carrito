@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Productos | Administración NDB</title>
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+<header class="header">
+  <div class="topbar">
+    <a class="brand" href="presupuestos.html"><img src="../img/logo-completo.png" alt="NDB"><div><h1>NDB Sanitarios</h1><small>Administración</small></div></a>
+    <button class="btn btn-red" onclick="logout()">Cerrar sesión</button>
+  </div>
+</header>
+<main class="container">
+  <div class="layout admin-layout">
+    <aside class="card side">
+      <a href="presupuestos.html">Pedidos y resumen</a>
+      <a class="active" href="productos.html">Agregar productos</a>
+      <a href="clientes.html">Agregar clientes</a>
+      <a href="../productos.html">Ver tienda</a>
+    </aside>
+    <section class="card">
+      <div class="section-title"><div><h2>Productos</h2><p class="muted">Cargá productos con foto, precio, stock, marca y categoría.</p></div></div>
+      <div class="admin-create-box">
+        <h3>Agregar producto</h3>
+        <div class="admin-form-grid">
+          <input id="newProductCode" class="field" placeholder="Código *">
+          <input id="newProductName" class="field" placeholder="Nombre del producto *">
+          <select id="newProductBrand" class="field"></select>
+          <select id="newProductCategory" class="field"></select>
+          <input id="newProductPrice" class="field" type="number" min="0" step="0.01" placeholder="Precio *">
+          <input id="newProductStock" class="field" type="number" min="0" step="1" placeholder="Stock *">
+          <input id="newProductMinStock" class="field" type="number" min="0" step="1" placeholder="Stock mínimo">
+          <input id="newProductPreviousPrice" class="field" type="number" min="0" step="0.01" placeholder="Precio anterior (opcional)">
+          <div class="admin-span-2 image-upload-box">
+            <label for="newProductImage" class="upload-label">Foto del producto</label>
+            <input id="newProductImage" class="file-input" type="file" accept="image/*" onchange="previewProductImage(this)">
+            <div class="upload-help">Elegí una foto desde tu computadora o celular. La página la optimiza automáticamente antes de guardarla.</div>
+            <div id="newProductImagePreviewWrap" class="image-preview-wrap hidden"><img id="newProductImagePreview" alt="Vista previa de la foto"><button type="button" class="btn btn-light btn-small" onclick="clearProductImage()">Quitar foto</button></div>
+          </div>
+          <textarea id="newProductDescription" class="field admin-span-2" rows="3" placeholder="Descripción (opcional)"></textarea>
+        </div>
+        <div class="check-row"><label><input id="newProductSale" type="checkbox"> Oferta</label></div>
+        <button id="createProductBtn" class="btn btn-red" onclick="createAdminProduct()">+ Agregar producto</button>
+      </div>
+      <hr class="linea-roja">
+      <div id="adminProducts" class="admin-products-grid"></div>
+    </section>
+  </div>
+</main>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="../js/config.js"></script><script src="../js/firebase.js"></script><script src="../js/app.js"></script>
+</body>
+</html>
