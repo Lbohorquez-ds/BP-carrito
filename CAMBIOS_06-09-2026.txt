@@ -1,0 +1,39 @@
+CAMBIOS REALIZADOS - NDB / BP CARRITO
+
+1. ATENCION PERSONALIZADA
+- El acceso "Atención personalizada" abre WhatsApp al 11 2612-7218.
+- Se mantiene un acceso separado para clientes con inicio de sesión.
+
+2. CATALOGO PUBLICO / COMPRA CON SESION
+- Los productos, precios y stock pueden verse sin iniciar sesión.
+- Para agregar al carrito se exige iniciar sesión como cliente.
+- firebase.rules fue actualizado para permitir lectura pública de productos activos desde el sitio.
+
+IMPORTANTE FIREBASE:
+Además de subir estos archivos a GitHub Pages, hay que publicar firebase.rules en el proyecto Firebase para que el catálogo público pueda leer productos.
+
+3. PEDIDOS Y REMITOS
+- El PDF inicial del pedido fue rediseñado con logo, datos del cliente, tabla de productos y total.
+- Al cambiar un pedido a "Preparado" se descarga automáticamente un remito.
+- En pedidos Preparados/Entregados queda disponible un botón "Remito" para volver a descargarlo.
+
+4. ADMINISTRACION DE PRODUCTOS
+- Buscador por nombre o código.
+- Orden por Nombre A-Z, Nombre Z-A o Código.
+- Se mantiene modificación rápida de precio, stock, stock mínimo, oferta y destacado.
+
+
+NUEVA MEJORA ADMINISTRACIÓN:
+- Se quitó “Ver tienda” de todo el panel administrador.
+- Clientes con buscador y orden.
+- Botón para eliminar cliente: elimina su perfil/rol de Firestore y revoca el acceso, preservando pedidos históricos.
+- Rediseño responsive del administrador para celular y computadora.
+- Mejoras visuales en menú, formularios, tarjetas, botones y espaciados.
+
+
+CATÁLOGO PDF:
+- Botón en Administración > Productos para generar un catálogo PDF desde Firebase.
+- Opciones: Marca + categoría, solo marca o solo categoría.
+- 6, 8 o 12 productos por hoja.
+- Opción para mostrar u ocultar precios.
+- Incluye logo, foto, código, nombre, marca/categoría, stock y precio.

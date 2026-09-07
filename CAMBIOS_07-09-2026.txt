@@ -1,0 +1,17 @@
+CAMBIOS REALIZADOS - 07/09/2026
+
+1. Se eliminó "Stock actualizado" de las tarjetas de la pantalla principal.
+2. Se corrigió la alineación de "Compra segura" en el pie de página.
+3. Se redujo y refinó el tamaño de los botones del encabezado.
+4. El catálogo ahora carga productos sin exigir inicio de sesión.
+   - Un visitante puede ver productos, precios, stock, marcas y categorías.
+   - Para agregar al carrito/comprar, debe iniciar sesión.
+   - También se muestran productos antiguos que no tengan el campo "active"; sólo se ocultan los que tengan active=false.
+5. Se corrigieron las rutas de los logos para usar los archivos reales de /img:
+   - img/logo-completo.jpg
+   - img/logo.jpg
+6. Se agregaron pequeños ajustes estéticos de espaciado, hover y sombras.
+
+IMPORTANTE FIREBASE:
+El archivo firebase.rules incluido ya permite lectura pública de /productos (allow read: if true).
+Para que el catálogo público funcione en GitHub Pages, esas reglas deben estar publicadas en Firestore.
