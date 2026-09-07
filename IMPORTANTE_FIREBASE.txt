@@ -1,0 +1,11 @@
+NDB SANITARIOS - FIREBASE V3
+
+1) Subir TODO el contenido de la carpeta BP-carrito-main al repositorio GitHub Pages.
+2) Authentication > Configuración > Dominios autorizados:
+   verificar que figure: lbohorquez-ds.github.io
+3) El UID del administrador configurado en js/config.js es:
+   3Vx8WDmJiVTEWfOfsSjycelHDRs1
+4) En Firestore debe existir:
+   usuarios / 3Vx8WDmJiVTEWfOfsSjycelHDRs1
+   con rol = admin
+5) No subir solo algunos archivos: reemplazar css, js, html e img.
